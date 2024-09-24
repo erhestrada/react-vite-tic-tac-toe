@@ -7,11 +7,18 @@ function Square({squareValue, handleSquareClick}) {
 
 function Board() {
   const [squareValues, setSquareValues] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
 
   function handleSquareClick(i) {
     const updatedSquareValues = squareValues.slice();
-    updatedSquareValues[i] = 'X';
+    if (xIsNext) {
+      updatedSquareValues[i] = 'X';
+    } else {
+      updatedSquareValues[i] = 'O';
+    }
+
     setSquareValues(updatedSquareValues);
+    setXIsNext(!xIsNext);
   }
 
   return (
