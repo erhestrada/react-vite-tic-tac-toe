@@ -10,6 +10,9 @@ function Board() {
   const [xIsNext, setXIsNext] = useState(true);
 
   function handleSquareClick(i) {
+    if (squareValues[i]) {
+      return
+    }
     const updatedSquareValues = squareValues.slice();
     if (xIsNext) {
       updatedSquareValues[i] = 'X';
